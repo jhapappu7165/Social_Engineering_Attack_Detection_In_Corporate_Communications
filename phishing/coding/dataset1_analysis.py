@@ -1,3 +1,5 @@
+# ISSUE: pre-defined keywords for phishing emails and safe emails
+
 import pandas as pd
 import numpy as np 
 import re
@@ -56,6 +58,7 @@ for email_type in df['Email Type'].unique():
     print(f"  {email_type}:")
     print(f"    Avg: {subset['text_length'].mean():.0f} chars, {subset['word_count'].mean():.0f} words")
 print()
+
 
 # 4. PHISHING EMAIL KEYWORDS
 print("4. PHISHING EMAIL KEYWORD ANALYSIS")
