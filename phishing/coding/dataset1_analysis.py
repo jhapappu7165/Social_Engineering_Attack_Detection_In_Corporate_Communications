@@ -60,6 +60,7 @@ for email_type in df['Email Type'].unique():
 print()
 
 
+
 # 4. PHISHING EMAIL KEYWORDS
 print("4. PHISHING EMAIL KEYWORD ANALYSIS")
 phishing_emails = df[df['Email Type'] == 'Phishing Email']['Email Text'].str.lower()
@@ -80,6 +81,7 @@ for keyword, count in sorted_kw[:10]:
     pct = (count / len(phishing_emails)) * 100
     print(f"  '{keyword}': {count:4d} ({pct:5.2f}%)")
 print()
+
 
 # ============================================================================
 # 5. SAFE EMAIL KEYWORDS
@@ -102,6 +104,7 @@ for keyword, count in sorted_kw_safe[:10]:
     print(f"  '{keyword}': {count:4d} ({pct:5.2f}%)")
 print()
 
+
 # ============================================================================
 # 6. URL/LINK DETECTION
 # ============================================================================
@@ -116,6 +119,7 @@ for email_type in df['Email Type'].unique():
     urls = subset['has_url'].sum()
     print(f"  {email_type}: {urls} ({urls/len(subset)*100:.2f}%)")
 print()
+
 
 # ============================================================================
 # 7. EMAIL ADDRESSES AND PHONE NUMBERS
