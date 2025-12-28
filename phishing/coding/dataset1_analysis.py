@@ -7,7 +7,7 @@ from collections import Counter
 
 
 # Load dataset
-df = pd.read_csv("phishing/datasets/Ds1:Phishing_Email.csv", index_col=0)
+df = pd.read_csv("datasets/dataset1/Ds1:Phishing_Email.csv", index_col=0)
 
 
 print("=" * 80)
@@ -21,9 +21,15 @@ print()
 # ============================================================================
 print("1. DATASET OVERVIEW")
 print(f"Total emails: {len(df)}")
-print(f"Columns: {list(df.columns)}")
+print(f"Columns: {list(df.columns)}") #Email Text, Email Type
 print(f"Dataset shape: {df.shape}")
 
+
+print('\n', "*** Recently added Column ***")
+df['label'] = df['Email Type'].map({'Safe Email': 0, 'Phishing Email': 1})
+print(df['label'].value_counts()) # 11322(0: Safe) and 7328(1: Phishing)
+print(df['label'].nunique()) # 2 unique labels: 0 and 1
+print("******", '\n')
 
 # ============================================================================
 # 2. EMAIL TYPE DISTRIBUTION
@@ -184,3 +190,8 @@ print()
 print("=" * 80)
 print("ANALYSIS COMPLETE")
 print("=" * 80)
+
+
+### Save the dataset with the new column in CSV format
+# df.to_csv("datasets/dataset1/dataset1_modified.csv")
+# print("MODIFIED DATASET saved to datasets/dataset1/dataset1_modified.csv")
