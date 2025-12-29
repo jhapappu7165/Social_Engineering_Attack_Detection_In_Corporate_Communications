@@ -1,0 +1,17 @@
+ *** Evaluating the model on the testing set *** 
+
+Accuracy:  0.984
+Precision:  0.9798
+Recall:  0.9875
+F1 Score:  0.9836
+Classification report:                precision    recall  f1-score   support
+
+        Safe       0.99      0.98      0.98     10664
+    Phishing       0.98      0.99      0.98     10132
+
+    accuracy                           0.98     20796
+   macro avg       0.98      0.98      0.98     20796
+weighted avg       0.98      0.98      0.98     20796
+
+Confusion matrix:  [[10458   206]
+ [  127 10005]]
