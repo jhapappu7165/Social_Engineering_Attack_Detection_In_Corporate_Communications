@@ -1,3 +1,5 @@
+*.csv filter=lfs diff=lfs merge=lfs -text
+*.parquet filter=lfs diff=lfs merge=lfs -text
 datasets/CC_1/emails.csv filter=lfs diff=lfs merge=lfs -text
 datasets/CC_2/CC_2 filter=lfs diff=lfs merge=lfs -text
 enron_processed_baseline.parquet filter=lfs diff=lfs merge=lfs -text
