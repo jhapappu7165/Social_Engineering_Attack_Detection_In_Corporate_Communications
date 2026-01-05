@@ -457,6 +457,7 @@ def classWeightAnalysis(model_class, model_params, X_train_tfidf, y_train, X_tes
     - X_test_tfidf: Test features
     - y_test: Test labels
     '''
+    
     print('\n', '\n', "*** Class Weight Analysis ***", '\n')
     
     # Check class distribution
@@ -487,4 +488,3 @@ def classWeightAnalysis(model_class, model_params, X_train_tfidf, y_train, X_tes
     print("With class weights (balanced) - F1 Score: {:.4f}".format(f1_balanced))
     
     return model_balanced, accuracy_balanced
-

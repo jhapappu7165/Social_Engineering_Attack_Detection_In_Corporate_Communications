@@ -1,0 +1,252 @@
+@jhapappu7165 ➜ /workspaces/Social-Engineering-Attack-Detection-in-Corporate-Communications-/phishing (pappu) $ python models/baseline/NaiveBayes/NBcode.py
+
+ 
+ Datasets Loading and Combining *** 
+
+*** For Dataset 1 ***
+Number of emails in Dataset 1:  18650
+*** For Dataset 2 ***
+Number of emails in Dataset 2:  2859
+*** For Dataset 3 ***
+Number of emails in Dataset 3:  82486
+Number of emails in combined dataset:  103995
+Number of values in each type of label:  label
+0    53318
+1    50677
+Name: count, dtype: int64
+
+ 
+ *** Preprocessing the combined dataset *** 
+
+AFTER DROPPING NULL VALUES: Number of emails in combined dataset:  103979
+AFTER DROPPING NULL VALUES: Number of values in each type of label:  label
+0    53318
+1    50661
+Name: count, dtype: int64
+/workspaces/Social-Engineering-Attack-Detection-in-Corporate-Communications-/phishing/models/baseline/commonBase.py:49: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df['text'] = df['text'].astype(str) #convert text to string type
+
+ AFTER DROPPING EMPTY TEXT: Number of emails in combined dataset:  103979  (0 dropped)
+AFTER DROPPING EMPTY TEXT: Number of values in each type of label:  label
+0    53318
+1    50661
+Name: count, dtype: int64
+
+ 
+ *** Extracting X and y values *** 
+
+X shape:  (103979,)
+y shape:  (103979,)
+y distribution:  [53318 50661]
+
+ 
+ *** Splitting the dataset into training, validation and testing sets *** 
+
+Training set size:  66546
+Validation set size:  16637
+Testing set size:  20796
+y distribution in training set:  [34123 32423]
+y distribution in validation set:  [8531 8106]
+y distribution in testing set:  [10664 10132]
+
+ 
+ *** Vectorizing the text (train, test, validation) data *** 
+
+Train features shape:  (66546, 10000)
+Validation features shape:  (16637, 10000)
+Test features shape:  (20796, 10000)
+
+ 
+ *** Training the Naive Bayes model *** 
+
+Terminated
+@jhapappu7165 ➜ /workspaces/Social-Engineering-Attack-Detection-in-Corporate-Communications-/phishing (pappu) $ python models/baseline/NaiveBayes/NBcode.py
+
+ 
+ Datasets Loading and Combining *** 
+
+*** For Dataset 1 ***
+Number of emails in Dataset 1:  18650
+*** For Dataset 2 ***
+Number of emails in Dataset 2:  2859
+*** For Dataset 3 ***
+Number of emails in Dataset 3:  82486
+Number of emails in combined dataset:  103995
+Number of values in each type of label:  label
+0    53318
+1    50677
+Name: count, dtype: int64
+
+ 
+ *** Preprocessing the combined dataset *** 
+
+AFTER DROPPING NULL VALUES: Number of emails in combined dataset:  103979
+AFTER DROPPING NULL VALUES: Number of values in each type of label:  label
+0    53318
+1    50661
+Name: count, dtype: int64
+/workspaces/Social-Engineering-Attack-Detection-in-Corporate-Communications-/phishing/models/baseline/commonBase.py:49: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df['text'] = df['text'].astype(str) #convert text to string type
+
+ AFTER DROPPING EMPTY TEXT: Number of emails in combined dataset:  103979  (0 dropped)
+AFTER DROPPING EMPTY TEXT: Number of values in each type of label:  label
+0    53318
+1    50661
+Name: count, dtype: int64
+
+ 
+ *** Extracting X and y values *** 
+
+X shape:  (103979,)
+y shape:  (103979,)
+y distribution:  [53318 50661]
+
+ 
+ *** Splitting the dataset into training, validation and testing sets *** 
+
+Training set size:  66546
+Validation set size:  16637
+Testing set size:  20796
+y distribution in training set:  [34123 32423]
+y distribution in validation set:  [8531 8106]
+y distribution in testing set:  [10664 10132]
+
+ 
+ *** Vectorizing the text (train, test, validation) data *** 
+
+Train features shape:  (66546, 10000)
+Validation features shape:  (16637, 10000)
+Test features shape:  (20796, 10000)
+
+ 
+ *** Training the Naive Bayes model *** 
+
+Training Time:  0.04  seconds AND  0.0  minutes
+Model trained successfully
+
+ 
+ *** Performing Cross-validation *** 
+
+Cross-validation scores:  [0.96055597 0.96070328 0.95942595 0.9597265  0.95935082]
+Mean CV accuracy: 0.9600 (+/- 0.0011)
+Min CV accuracy: 0.9594
+Max CV accuracy: 0.9607
+Cross-validation completed successfully
+
+ 
+ *** LEARNING CURVE *** 
+
+Learning curve plot saved successfully
+
+ 
+ *** Alpha Tuning for Naive Bayes *** 
+
+Alpha tuning plot saved successfully
+Best alpha value: 1e-10 (Validation Accuracy: 0.9639)
+
+ 
+ *** Making predictions on the testing set *** 
+
+Testing time:  0.02  seconds AND  0.0  minutes
+Predictions made successfully
+
+ 
+ *** Evaluating the model on the testing set *** 
+
+Accuracy:  0.9641
+Precision:  0.9842
+Recall:  0.9415
+F1 Score:  0.9624
+Classification report:                precision    recall  f1-score   support
+
+        Safe       0.95      0.99      0.97     10664
+    Phishing       0.98      0.94      0.96     10132
+
+    accuracy                           0.96     20796
+   macro avg       0.97      0.96      0.96     20796
+weighted avg       0.96      0.96      0.96     20796
+
+Confusion matrix:  [[10511   153]
+ [  593  9539]]
+Model evaluation completed successfully
+
+ 
+ *** Additional Metrics: ROC-AUC, ROC curve, Precision-Recall curve *** 
+
+ROC-AUC Score: 0.9963
+ROC curve saved successfully
+Precision-Recall curve saved successfully
+
+ 
+ *** Feature Importance Analysis *** 
+
+Warning: Model does not have coef_ or feature_importances_ attribute
+
+ 
+ *** Error Analysis *** 
+
+Total misclassified: 746 out of 20796
+Misclassification rate: 3.59%
+
+False Positives (Safe → Phishing): 153
+False Negatives (Phishing → Safe): 593
+Misclassified samples saved to models/baseline/NaiveBayes/NBmisclassified_samples.csv
+
+Sample False Positives (Safe emails misclassified as Phishing):
+
+Example 1:
+Text: fun pics htm fun pics htm...
+True: Safe, Predicted: Phishing, Probability: 0.7915
+
+Example 2:
+Text: LIFETIME MOVIE NEWSLETTERThis Week's Movies to Watch on Lifetime[ http://www.lifetimetv.com/movies/index.html ]August 19, 2002*************************************************************************C...
+True: Safe, Predicted: Phishing, Probability: 0.9141
+
+Example 3:
+Text: opgdxdjintlpaypalcom opgdxdjintlpaypalcom dear tony meyer email confirms paid godaddycom inc1430 usd using paypal exchange rate purchase 1 nzd 0773054usd credit card transaction appear bill paypal god...
+True: Safe, Predicted: Phishing, Probability: 0.8271
+
+Sample False Negatives (Phishing emails misclassified as Safe):
+
+Example 1:
+Text: become and larger man . . . eagle relaxation leaden madras meson mitosis quadrant congratulatory salaam transferred flatulent statesmen credential biota horoscope banister tampon edit superb biochemic...
+True: Phishing, Predicted: Safe, Probability: 0.1955
+
+Example 2:
+Text: b woo sbwoo8020initiativenet arent asian pacfic americans apas accorded equal opportunity already unfortunately apas accorded equal opportunity workplaces presently equal opportunity means every man w...
+True: Phishing, Predicted: Safe, Probability: 0.0322
+
+Example 3:
+Text: phentermine charset iso 8859 1 compleat palpable aphrodite purse trianon chevy scarsdale authoritarian blat antecedent counterflow erect skeptic parakeet hostess lacy cornea deoxyribose bisque shamefa...
+True: Phishing, Predicted: Safe, Probability: 0.4009
+
+ 
+ *** Comprehensive Results Report *** 
+
+Comprehensive results saved to models/baseline/NaiveBayes/NBcomprehensive_results.json
+
+Summary:
+============================================================
+Cross-Validation Accuracy: 0.9600 (+/- 0.0011)
+Validation Set Accuracy: 0.9639
+Test Set Accuracy: 0.9641
+Test Set ROC-AUC: 0.9963
+============================================================
+
+ 
+ *** Saving the MODEL and VECTORIZER *** 
+
+Model and vectorizer saved successfully to models/baseline/NaiveBayes/NB_model.joblib and models/baseline/NaiveBayes/NB_vectorizer.joblib
+
+ 
+ *** ALL NB ANALYSIS COMPLETE *** 
+
+@jhapappu7165 ➜ /workspaces/Social-Engineering-Attack-Detection-in-Corporate-Communications-/phishing (pappu) $ 

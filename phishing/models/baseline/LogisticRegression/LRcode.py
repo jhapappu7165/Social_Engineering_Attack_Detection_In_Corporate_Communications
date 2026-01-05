@@ -6,11 +6,13 @@ from sklearn.metrics import accuracy_score
 import sys
 import os
 
+''' __file__ is for the current file (LRcode.py). os.path.dirname() pushes the folder level up by 1. os.path.abspath() gets the full path from the root.'''
 current_dir = os.path.dirname(os.path.abspath(__file__))  # LogisticRegression folder
 baseline_dir = os.path.dirname(current_dir)  # baseline folder
 
 if baseline_dir not in sys.path:
     sys.path.insert(0, baseline_dir)
+
 
 from commonBase import (
     datasetsCombining, preprocessing, splitting, vectorizing,
@@ -163,4 +165,3 @@ if __name__ == "__main__":
     savingModel(lr_model, vectorizer, 'LR', 'models/baseline/LogisticRegression')
     
     print('\n', '\n', "*** ALL ANALYSIS COMPLETE ***", '\n')
-    

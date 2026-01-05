@@ -1,0 +1,403 @@
+ Datasets Loading and Combining *** 
+
+*** For Dataset 1 ***
+Number of emails in Dataset 1:  18650
+*** For Dataset 2 ***
+Number of emails in Dataset 2:  2859
+*** For Dataset 3 ***
+Number of emails in Dataset 3:  82486
+Number of emails in combined dataset:  103995
+Number of values in each type of label:  label
+0    53318
+1    50677
+Name: count, dtype: int64
+
+ 
+ *** Preprocessing the combined dataset *** 
+
+AFTER DROPPING NULL VALUES: Number of emails in combined dataset:  103979
+AFTER DROPPING NULL VALUES: Number of values in each type of label:  label
+0    53318
+1    50661
+Name: count, dtype: int64
+/workspaces/Social-Engineering-Attack-Detection-in-Corporate-Communications-/phishing/models/baseline/commonBase.py:49: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df['text'] = df['text'].astype(str) #convert text to string type
+
+ AFTER DROPPING EMPTY TEXT: Number of emails in combined dataset:  103979  (0 dropped)
+AFTER DROPPING EMPTY TEXT: Number of values in each type of label:  label
+0    53318
+1    50661
+Name: count, dtype: int64
+
+ 
+ *** Extracting X and y values *** 
+
+X shape:  (103979,)
+y shape:  (103979,)
+y distribution:  [53318 50661]
+
+ 
+ *** Splitting the dataset into training, validation and testing sets *** 
+
+Training set size:  66546
+Validation set size:  16637
+Testing set size:  20796
+y distribution in training set:  [34123 32423]
+y distribution in validation set:  [8531 8106]
+y distribution in testing set:  [10664 10132]
+
+ 
+ *** Vectorizing the text (train, test, validation) data *** 
+
+Train features shape:  (66546, 10000)
+Validation features shape:  (16637, 10000)
+Test features shape:  (20796, 10000)
+
+ 
+ *** Training the Logistic Regression model *** 
+
+/usr/local/python/3.12.1/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1135: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', and C=np.inf instead of penalty=None.
+  warnings.warn(
+Training time:  0.48  seconds AND  0.01  minutes
+Model trained successfully
+
+ 
+ *** Performing Cross-validation *** 
+
+Cross-validation scores:  [0.98249437 0.98038921 0.9807649  0.9815914  0.98061462]
+Mean CV accuracy: 0.9812 (+/- 0.0016)
+Min CV accuracy: 0.9804
+Max CV accuracy: 0.9825
+Cross-validation completed successfully
+
+ 
+ *** LEARNING CURVE *** 
+
+/usr/local/python/3.12.1/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1135: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', and C=np.inf instead of penalty=None.
+  warnings.warn(
+Learning curve plot saved successfully
+
+ 
+ *** Making predictions on the testing set *** 
+
+Testing time:  0.01  seconds AND  0.0  minutes
+Predictions made successfully
+
+ 
+ *** Evaluating the model on the testing set *** 
+
+Accuracy:  0.9822
+Precision:  0.977
+Recall:  0.9866
+F1 Score:  0.9818
+Classification report:                precision    recall  f1-score   support
+
+        Safe       0.99      0.98      0.98     10664
+    Phishing       0.98      0.99      0.98     10132
+
+    accuracy                           0.98     20796
+   macro avg       0.98      0.98      0.98     20796
+weighted avg       0.98      0.98      0.98     20796
+
+Confusion matrix:  [[10429   235]
+ [  136  9996]]
+Model evaluation completed successfully
+
+ 
+ *** Additional Metrics: ROC-AUC, ROC curve, Precision-Recall curve *** 
+
+ROC-AUC Score: 0.9983
+ROC curve saved successfully
+Precision-Recall curve saved successfully
+
+ 
+ *** Feature Importance Analysis *** 
+
+Top 100 Features for Phishing Detection (Positive coefficients):
+               feature  coefficient
+         josemonkeyorg     5.512514
+                  2004     5.149163
+                remove     4.880224
+                  0300     4.739360
+                 money     4.721404
+                 click     4.709741
+               account     4.432291
+                  love     4.178965
+                  2005     4.135286
+                  life     3.925209
+                  site     3.813632
+               replica     3.621628
+            investment     3.573574
+                  meds     3.518496
+               company     3.431373
+                  2016     3.348952
+               quality     3.321635
+               watches     3.294398
+                viagra     3.219217
+            guaranteed     3.152616
+              aug 2008     3.141989
+                  bank     3.134053
+                  best     3.026291
+                  2019     3.019656
+                  info     2.978787
+            statements     2.946383
+             monkeyorg     2.926178
+                  2017     2.890296
+                 girls     2.848425
+               removed     2.831657
+                   low     2.813013
+                    95     2.777764
+                  2018     2.773541
+              software     2.742822
+                   man     2.735507
+                inches     2.724783
+                  lose     2.722684
+                mobile     2.716985
+              mortgage     2.714970
+                  0900     2.702307
+                 reply     2.688556
+                   aug     2.680683
+             worldwide     2.679302
+             marketing     2.670863
+          professional     2.665445
+                   men     2.653251
+           medications     2.653015
+               payment     2.628371
+                 pills     2.616756
+                   sex     2.539375
+              paliourg     2.532727
+                   biz     2.510465
+               medical     2.489891
+                 funds     2.466136
+                  0200     2.449673
+                  huge     2.440865
+                 cheap     2.374405
+                 hello     2.373603
+                  free     2.372431
+                 adobe     2.368498
+          prescription     2.360867
+               product     2.331218
+                    em     2.322788
+                   utf     2.317399
+                 adult     2.307789
+spamassassin sightings     2.290455
+              returned     2.274823
+                 rolex     2.260917
+                 cable     2.245947
+           enhancement     2.230253
+                    oo     2.230247
+                    vi     2.204583
+                cialis     2.204051
+                   100     2.202325
+               removal     2.182967
+                movies     2.174525
+                prince     2.167951
+               dollars     2.155362
+             sightings     2.149282
+                health     2.141944
+              transfer     2.140752
+                  http     2.134262
+                  fast     2.125131
+              bismarck     2.121420
+              approved     2.120680
+                   pro     2.110412
+                    gr     2.102633
+        remove subject     2.092290
+                  usaa     2.092021
+                proven     2.082886
+                norton     2.075042
+                  card     2.061539
+                  gain     2.052512
+               million     2.049378
+           immediately     2.049165
+                    ra     2.040205
+                  2022     2.034521
+                  para     2.032815
+             important     2.021785
+                online     2.013667
+
+Top 100 Features for Safe Email Detection (Negative coefficients):
+                                        feature  coefficient
+                                          wrote   -11.174014
+                                          enron   -10.563858
+                                         thanks    -7.958960
+                                     university    -5.925992
+                                             pm    -5.593424
+                                         ierant    -5.473528
+                                            url    -5.243530
+                                       opensuse    -5.238816
+                                          vince    -5.082031
+                                       language    -5.073997
+                                           fork    -4.416441
+                                           date    -4.415571
+                                         louise    -4.390224
+                                            edu    -4.296353
+                                             im    -4.226551
+                                    linguistics    -4.196049
+                                           2001    -4.136372
+                                           perl    -4.103859
+                                            ect    -4.072773
+                                      questions    -4.016399
+                                       attached    -3.860465
+                                           2002    -3.841335
+                                    spamexperts    -3.801449
+                                            713    -3.782736
+                                       url http    -3.674666
+                                       february    -3.605981
+                                           1300    -3.523935
+                                           cnet    -3.519077
+                                      following    -3.511041
+                                           tony    -3.506864
+                                        version    -3.475508
+                                           code    -3.386639
+                                       research    -3.375669
+_______________________________________________    -3.367380
+                                           2007    -3.349286
+                                           john    -3.338355
+                                           2000    -3.329599
+                                           file    -3.250174
+                                     conference    -3.199747
+                                            doc    -3.188084
+                                   spamassassin    -3.182829
+                                          meter    -3.170702
+                                      languages    -3.168388
+                                            bug    -3.065402
+                                        meeting    -3.052924
+                                       let know    -3.040955
+                                            use    -3.009611
+                                       question    -3.007897
+                                            uai    -3.007612
+                                           list    -2.995096
+                                          think    -2.980762
+                                          april    -2.971470
+                                         issues    -2.958398
+                                         friday    -2.941647
+                                          daren    -2.932194
+                                          using    -2.901669
+                                            tom    -2.894944
+                                            ive    -2.880570
+                                           dave    -2.880027
+                                          group    -2.874730
+                                       probably    -2.874457
+                                         energy    -2.864401
+                                           ilug    -2.854241
+                                         cheers    -2.853303
+                                        postfix    -2.850542
+                                          users    -2.843949
+                                             01    -2.810988
+                                        houston    -2.782129
+                                            feb    -2.781279
+                                       workshop    -2.771885
+                                      enron com    -2.770099
+                                      slideshow    -2.757768
+                                          yahoo    -2.751814
+                                           sale    -2.741179
+                                       comments    -2.737987
+                                           book    -2.730741
+                                            gas    -2.704341
+                                         change    -2.701498
+                                      forwarded    -2.696845
+                                           data    -2.692217
+                                          patch    -2.682534
+                                         python    -2.681458
+                                          march    -2.677796
+                                          david    -2.670880
+                                        english    -2.668030
+                                          thats    -2.657072
+                                             ok    -2.648881
+                                            log    -2.636801
+                                           mark    -2.621285
+                                        discuss    -2.580893
+                                      pythondev    -2.573601
+                                   mailing list    -2.561026
+                                           jeff    -2.558381
+                                        problem    -2.520458
+                                          meyer    -2.490232
+                                           1200    -2.485754
+                                            hpl    -2.481971
+                                          point    -2.452334
+                                         monday    -2.444970
+                                          texas    -2.437392
+
+Feature importance saved to models/baseline/LogisticRegression/LRfeature_importance.csv
+
+ 
+ *** Error Analysis *** 
+
+Total misclassified: 371 out of 20796
+Misclassification rate: 1.78%
+
+False Positives (Safe → Phishing): 235
+False Negatives (Phishing → Safe): 136
+Misclassified samples saved to models/baseline/LogisticRegression/LRmisclassified_samples.csv
+
+Sample False Positives (Safe emails misclassified as Phishing):
+
+Example 1:
+Text: empty...
+True: Safe, Predicted: Phishing, Probability: 0.6029
+
+Example 2:
+Text: fun pics htm fun pics htm...
+True: Safe, Predicted: Phishing, Probability: 0.8035
+
+Example 3:
+Text: LIFETIME MOVIE NEWSLETTERThis Week's Movies to Watch on Lifetime[ http://www.lifetimetv.com/movies/index.html ]August 19, 2002*************************************************************************C...
+True: Safe, Predicted: Phishing, Probability: 0.7974
+
+Sample False Negatives (Phishing emails misclassified as Safe):
+
+Example 1:
+Text: b woo sbwoo8020initiativenet arent asian pacfic americans apas accorded equal opportunity already unfortunately apas accorded equal opportunity workplaces presently equal opportunity means every man w...
+True: Phishing, Predicted: Safe, Probability: 0.4195
+
+Example 2:
+Text:  script language javascript type text javascript function dopopunder var http rd focalex com popunder 252776 var b width 720 height 300 location 1 var c menubar 1 resizable 1 scrollbars 1 var status 1...
+True: Phishing, Predicted: Safe, Probability: 0.3220
+
+Example 3:
+Text: interested exchanging links surfing net came across website wanted know interested exchanging links site menopause black cohosh center find nearly hundred articles scientific resources menopause black...
+True: Phishing, Predicted: Safe, Probability: 0.3149
+
+ 
+ *** Regularization Analysis *** 
+
+/usr/local/python/3.12.1/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1135: FutureWarning: 'penalty' was deprecated in version 1.8 and will be removed in 1.10. To avoid this warning, leave 'penalty' set to its default value and use 'l1_ratio' or 'C' instead. Use l1_ratio=0 instead of penalty='l2', l1_ratio=1 instead of penalty='l1', and C=np.inf instead of penalty=None.
+  warnings.warn(
+Regularization analysis plot saved successfully
+Best C value: 1000.0 (Validation Accuracy: 0.9862)
+
+ 
+ *** Class Weight Analysis *** 
+
+Class weights (balanced): {np.int64(0): np.float64(0.9750901151715852), np.int64(1): np.float64(1.026215957807729)}
+
+Without class weights - Accuracy: 0.9822
+With class weights (balanced) - Accuracy: 0.9819
+Without class weights - F1 Score: 0.9818
+With class weights (balanced) - F1 Score: 0.9815
+
+ 
+ *** Comprehensive Results Report *** 
+
+Comprehensive results saved to models/baseline/LogisticRegression/LRcomprehensive_results.json
+
+Summary:
+============================================================
+Cross-Validation Accuracy: 0.9812 (+/- 0.0016)
+Validation Set Accuracy: 0.9815
+Test Set Accuracy: 0.9822
+Test Set ROC-AUC: 0.9983
+============================================================
+
+ 
+ *** Saving the MODEL and VECTORIZER *** 
+
+Model and vectorizer saved successfully to models/baseline/LogisticRegression/LR_model.joblib and models/baseline/LogisticRegression/LR_vectorizer.joblib
+
+ 
+ *** ALL ANALYSIS COMPLETE *** 
