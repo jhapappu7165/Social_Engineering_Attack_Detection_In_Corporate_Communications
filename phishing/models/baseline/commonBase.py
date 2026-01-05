@@ -407,13 +407,13 @@ def comprehensiveResults(model, X_train_tfidf, X_val_tfidf, X_test_tfidf, y_trai
     return results
 
 
-def hyperparameterTuning(model_class, param_grid, X_train_tfidf, y_train, scoring='f1', cv=5):
+def hyperparameterTuning(model_instance, param_grid, X_train_tfidf, y_train, scoring='f1', cv=5):
     '''
     Generic hyperparameter tuning using GridSearchCV.
-    Works with any sklearn model class.
+    Works with any sklearn model instance.
     
     Parameters:
-    - model_class: The model class (e.g., LogisticRegression, MultinomialNB, etc.)
+    - model_instance: An instantiated model (e.g., LogisticRegression(), MultinomialNB(), etc.)
     - param_grid: Dictionary of parameters to search
     - X_train_tfidf: Training features
     - y_train: Training labels
@@ -423,7 +423,7 @@ def hyperparameterTuning(model_class, param_grid, X_train_tfidf, y_train, scorin
     print('\n', '\n', "*** Hyperparameter Tuning with GridSearchCV ***", '\n')
     
     grid_search = GridSearchCV(
-        model_class,
+        model_instance,
         param_grid,
         cv=cv,
         scoring=scoring,

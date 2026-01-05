@@ -112,9 +112,9 @@ if __name__ == "__main__":
         'solver': ['liblinear', 'saga'],
         'max_iter': [1000, 2000]
     }
-    best_model, best_params = hyperparameterTuning(LogisticRegression, param_grid, X_train_tfidf, y_train)
-    lr_model = best_model  # Use best model for remaining steps
-    # best_params = None  # Set to None if not using hyperparameter tuning
+    # best_model, best_params = hyperparameterTuning(LogisticRegression(), param_grid, X_train_tfidf, y_train)
+    # lr_model = best_model  # Use best model for remaining steps
+    best_params = None  # Set to None if not using hyperparameter tuning
     
     # Step 9: Make predictions (from commonBase)
     y_pred, y_pred_proba, testing_time = predictions(lr_model, X_test_tfidf, y_test)
@@ -163,3 +163,4 @@ if __name__ == "__main__":
     savingModel(lr_model, vectorizer, 'LR', 'models/baseline/LogisticRegression')
     
     print('\n', '\n', "*** ALL ANALYSIS COMPLETE ***", '\n')
+    
