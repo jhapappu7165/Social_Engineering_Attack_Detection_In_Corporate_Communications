@@ -57,3 +57,4 @@ class EmailDataset(Dataset): #custom dataset so PyTorch can fetch examples: emai
             'attention_mask': encoding['attention_mask'].flatten(), #tells BERT which tokens are real(1) vs padding(0)
             'labels': torch.tensor(label, dtype=torch.long) #convert label to long tensor
         }
+    
