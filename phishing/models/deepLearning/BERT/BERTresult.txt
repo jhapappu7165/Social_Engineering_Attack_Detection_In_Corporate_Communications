@@ -1,0 +1,61 @@
+Epoch 2/2
+--------------------------------------------------
+...
+Batch 4100/4160, Loss: 0.2463
+
+Average Training Loss: 0.0795
+Validation Accuracy: 0.9888
+New best validation accuracy! Saving model...
+
+Epoch 2/2
+--------------------------------------------------
+Batch 100/4160, Loss: 0.0857
+...
+
+Average Training Loss: 0.0160
+Validation Accuracy: 0.9910
+New best validation accuracy! Saving model...
+
+Training completed in 211.95 minutes
+Best validation accuracy: 0.9910
+
+ 
+ *** Making Predictions with BERT *** 
+
+Testing time: 321.11 seconds (5.35 minutes)
+Predictions made successfully
+
+ 
+ *** Evaluating the model on the testing set *** 
+
+Accuracy:  0.9922
+Precision:  0.9904
+Recall:  0.9937
+F1 Score:  0.992
+Classification report:                precision    recall  f1-score   support
+
+                               Safe       0.99      0.99      0.99     10664
+                           Phishing       0.99      0.99      0.99     10132
+
+                           accuracy                           0.99     20796
+                          macro avg       0.99      0.99      0.99     20796
+                       weighted avg       0.99      0.99      0.99     20796
+
+Confusion matrix:  [[10566    98]
+                    [   64 10068]]
+Model evaluation completed successfully
+
+ROC-AUC Score: 0.9996
+Average Precision: 0.9996
+
+ 
+ *** Saving BERT Model and Tokenizer *** 
+
+Writing model shards: 100%|████████████████████████████████████████████████| 1/1 [00:00<00:00,  2.90it/s]
+Model saved to: models/deepLearning/BERT/bert_model
+Tokenizer saved to: models/deepLearning/BERT/bert_tokenizer
+Training history saved
+
+ 
+ *** BERT TRAINING COMPLETE *** 
+ 
