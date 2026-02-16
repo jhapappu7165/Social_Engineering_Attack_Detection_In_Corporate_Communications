@@ -2,7 +2,7 @@
 
 **Team Members:** Pappu Jha, Hanzla Hamid, Nick Rahimi  
 
----
+--- 
 
 ## Project Overview
 
