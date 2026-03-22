@@ -3,6 +3,9 @@
 **Team Members:** Pappu Jha, Hanzla Hamid, Nick Rahimi  
 
 ---
+> ⚠️ This project is currently under active research and development. All implementations, models, and evaluations will be added progressively.
+
+--- 
 
 ## Project Overview
 
