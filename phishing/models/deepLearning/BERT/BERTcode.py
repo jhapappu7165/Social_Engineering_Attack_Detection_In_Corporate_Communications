@@ -35,17 +35,17 @@ from commonBase import (
 
 
 ''' BERT-specific Functions and Classes '''
-class EmailDataset(Dataset): #custom dataset so PyTorch can fetch examples: email text,label,tokenized input
+class EmailDataset(Dataset): #custom dataset so PyTorch can fetch examples: email text, label, tokenized input
 
     def __init__(self, texts, labels, tokenizer, max_length=128):
         self.texts = texts #list/series of email strings
         self.labels = labels #list/series of binary labels (0 or 1)
         self.tokenizer = tokenizer #Stores tokenizer so dataset can tokenize each text on-demand
         self.max_length = max_length #max token length rule for BERT inputs
-    
+
     def __len__(self):
         return len(self.texts) #dataset size
-    
+
     def __getitem__(self, idx): #returns one training example at index idx. DataLoader repeatedly calls this to build batches
         text = str(self.texts[idx]) #convert email text to string
         label = self.labels[idx] #get label for this example (0 or 1)
@@ -63,8 +63,6 @@ class EmailDataset(Dataset): #custom dataset so PyTorch can fetch examples: emai
             'attention_mask': encoding['attention_mask'].flatten(), #tells BERT which tokens are real(1) vs padding(0)
             'labels': torch.tensor(label, dtype=torch.long) #convert label to long tensor
         }
-
-
 
 
 
