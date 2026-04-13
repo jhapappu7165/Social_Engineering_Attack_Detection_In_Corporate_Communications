@@ -215,3 +215,50 @@ label
 0    4091
 1    1718
 Name: count, dtype: int64
+
+
+
+
+
+
+### TRAININGBertForSequenceClassification LOAD REPORT from: bert-base-uncased
+Key                                        | Status     | 
+-------------------------------------------+------------+-
+cls.seq_relationship.bias                  | UNEXPECTED | 
+cls.predictions.transform.dense.weight     | UNEXPECTED | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED | 
+cls.predictions.bias                       | UNEXPECTED | 
+cls.predictions.transform.dense.bias       | UNEXPECTED | 
+cls.seq_relationship.weight                | UNEXPECTED | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED | 
+classifier.weight                          | MISSING    | 
+classifier.bias                            | MISSING    | 
+
+Notes:
+- UNEXPECTED    :can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING       :those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+
+
+
+
+
+
+
+
+
+Eval (test): 100%|███████████████████████████████████████████| 1547/1547 [01:29<00:00, 17.21batch/s]
+
+Classification report (test):
+               precision    recall  f1-score   support
+
+           0     0.9971    0.9981    0.9976     11879
+           1     0.9982    0.9974    0.9978     12867
+
+    accuracy                         0.9977     24746
+   macro avg     0.9977    0.9977    0.9977     24746
+weighted avg     0.9977    0.9977    0.9977     24746
+
+Confusion matrix (test):
+ [[11856    23]
+ [   34 12833]]
+Saved: /home/pappu/Research2/CIL/phishing/models/deepLearning/BERT_Advanced/bert_finetuned

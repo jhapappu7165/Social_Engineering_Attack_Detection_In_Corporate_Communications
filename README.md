@@ -7,7 +7,7 @@
 
 ## Project Overview
 
-Develop a system to detect social engineering attempts in emails, chat messages, and phone communications. Create behavioral models to identify manipulation techniques and psychological pressure tactics. Build an employee training system that adapts based on individual vulnerability patterns. Implement real-time alerting for suspicious communication patterns.
+Develop a system to detect social engineering attempts in emails, chat messages, and phone communications. Create behavioral models to identify manipulati on techniques and psychological pressure tactics. Build an employee training system that adapts based on individual vulnerability patterns. Implement real-time alerting for suspicious communication patterns.
 
 ### Overall Research Objective
 
