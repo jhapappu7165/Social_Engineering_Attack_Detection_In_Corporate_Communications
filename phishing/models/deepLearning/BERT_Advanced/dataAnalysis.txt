@@ -221,44 +221,120 @@ Name: count, dtype: int64
 
 
 
-### TRAININGBertForSequenceClassification LOAD REPORT from: bert-base-uncased
-Key                                        | Status     | 
--------------------------------------------+------------+-
-cls.seq_relationship.bias                  | UNEXPECTED | 
-cls.predictions.transform.dense.weight     | UNEXPECTED | 
-cls.predictions.transform.LayerNorm.weight | UNEXPECTED | 
-cls.predictions.bias                       | UNEXPECTED | 
-cls.predictions.transform.dense.bias       | UNEXPECTED | 
-cls.seq_relationship.weight                | UNEXPECTED | 
-cls.predictions.transform.LayerNorm.bias   | UNEXPECTED | 
-classifier.weight                          | MISSING    | 
-classifier.bias                            | MISSING    | 
 
-Notes:
-- UNEXPECTED    :can be ignored when loading from different task/architecture; not ok if you expect identical arch.
-- MISSING       :those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+================================================================================
+EVALUATION WITH JUST ONE (1) SOURCE
+================================================================================
 
+Preprocessing summary (combined):
+Cross-dataset duplicates before global dedup (text_norm+label): 780
+Global dedup rows: 164972 -> 164192 (removed 780)
 
+Preprocessing summary (per dataset):
 
+ ----------------------------------------
+Dataset: CEAS_08
+Shape: (39154, 7)
+Null values (key columns): {'sender': 0, 'receiver': 462, 'date': 0, 'subject': 28, 'body': 0, 'urls': 0, 'label': 0}
+Label value counts: {1: 21842, 0: 17312}
+Invalid label rows: 0
+Empty text rows: 0
+Very short text rows (<10): 0
+Duplicates within dataset (text_norm+label): 0
 
+ ----------------------------------------
+Dataset: Enron
+Shape: (29767, 3)
+Null values (key columns): {'subject': 198, 'body': 0, 'label': 0}
+Label value counts: {0: 15791, 1: 13976}
+Invalid label rows: 0
+Empty text rows: 0
+Very short text rows (<10): 3
+Duplicates within dataset (text_norm+label): 344
 
+ ----------------------------------------
+Dataset: Ling
+Shape: (2859, 3)
+Null values (key columns): {'subject': 62, 'body': 0, 'label': 0}
+Label value counts: {0: 2401, 1: 458}
+Invalid label rows: 0
+Empty text rows: 0
+Very short text rows (<10): 0
+Duplicates within dataset (text_norm+label): 0
 
+ ----------------------------------------
+Dataset: Nazario
+Shape: (1565, 7)
+Null values (key columns): {'sender': 0, 'receiver': 96, 'date': 1, 'subject': 4, 'body': 0, 'urls': 0, 'label': 0}
+Label value counts: {1: 1565}
+Invalid label rows: 0
+Empty text rows: 0
+Very short text rows (<10): 0
+Duplicates within dataset (text_norm+label): 0
 
+ ----------------------------------------
+Dataset: Nigerian_Fraud
+Shape: (3332, 7)
+Null values (key columns): {'sender': 331, 'receiver': 1324, 'date': 482, 'subject': 39, 'body': 0, 'urls': 0, 'label': 0}
+Label value counts: {1: 3332}
+Invalid label rows: 0
+Empty text rows: 0
+Very short text rows (<10): 0
+Duplicates within dataset (text_norm+label): 4
 
+ ----------------------------------------
+Dataset: phishing_email
+Shape: (82486, 2)
+Null values (key columns): {'text_combined': 0, 'label': 0}
+Label value counts: {1: 42891, 0: 39595}
+Invalid label rows: 0
+Empty text rows: 1
+Very short text rows (<10): 6
+Duplicates within dataset (text_norm+label): 408
 
-Eval (test): 100%|███████████████████████████████████████████| 1547/1547 [01:29<00:00, 17.21batch/s]
+ ----------------------------------------
+Dataset: SpamAssasin
+Shape: (5809, 7)
+Null values (key columns): {'sender': 0, 'receiver': 210, 'date': 0, 'subject': 16, 'body': 1, 'urls': 0, 'label': 0}
+Label value counts: {0: 4091, 1: 1718}
+Invalid label rows: 0
+Empty text rows: 0
+Very short text rows (<10): 0
+Duplicates within dataset (text_norm+label): 1
+
+Model runs:
+
+ ----------------------------------------
+Run: holdout_Enron
+Held-out source: Enron | test size: 29423
+Best val macro-F1: 0.9970
+
+Classification report (val):
+               precision    recall  f1-score   support
+
+           0     0.9953    0.9984    0.9968      6303
+           1     0.9986    0.9958    0.9972      7174
+
+    accuracy                         0.9970     13477
+   macro avg     0.9969    0.9971    0.9970     13477
+weighted avg     0.9970    0.9970    0.9970     13477
+
+Confusion matrix (val):
+ [[6293   10]
+ [  30 7144]]
 
 Classification report (test):
                precision    recall  f1-score   support
 
-           0     0.9971    0.9981    0.9976     11879
-           1     0.9982    0.9974    0.9978     12867
+           0     0.9943    0.9908    0.9926     15474
+           1     0.9899    0.9937    0.9918     13949
 
-    accuracy                         0.9977     24746
-   macro avg     0.9977    0.9977    0.9977     24746
-weighted avg     0.9977    0.9977    0.9977     24746
+    accuracy                         0.9922     29423
+   macro avg     0.9921    0.9923    0.9922     29423
+weighted avg     0.9922    0.9922    0.9922     29423
 
 Confusion matrix (test):
- [[11856    23]
- [   34 12833]]
-Saved: /home/pappu/Research2/CIL/phishing/models/deepLearning/BERT_Advanced/bert_finetuned
+ [[15332   142]
+ [   88 13861]]
+Saved: /home/pappu/Research2/phishing_classification/phishing/models/deepLearning/BERT_Advanced/bert_finetuned
+(base) pappu@Aquaman:~/Research2/phishing_classification$ 
